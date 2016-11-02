@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletScript.cs" />
      <Compile Include="Assets\Scripts\EnemyShootingScript.cs" />
+     <Compile Include="Assets\Scripts\EnemySpawningScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerShootingScript.cs" />
  <Reference Include="UnityEngine.UI">

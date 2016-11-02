@@ -50,6 +50,18 @@ namespace LK
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 10, playerTransform.position.z);
             }
+
+            else if (Input.GetKeyDown(KeyCode.Q) && currentLayer == 3)
+            {
+                currentLayer = 1;
+
+                UpdateColour(currentLayer);
+
+                Debug.Log(currentLayer);
+
+                playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 20, playerTransform.position.z);
+            }
+
             else if (Input.GetKeyDown(KeyCode.E) && currentLayer > 1)
             {
                 currentLayer--;
@@ -59,6 +71,17 @@ namespace LK
                 Debug.Log(currentLayer);
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 10, playerTransform.position.z);
+            }
+
+            else if (Input.GetKeyDown(KeyCode.E) && currentLayer == 1)
+            {
+                currentLayer = 3;
+
+                UpdateColour(currentLayer);
+
+                Debug.Log(currentLayer);
+
+                playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 20, playerTransform.position.z);
             }
         }
 
