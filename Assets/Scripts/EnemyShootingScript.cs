@@ -34,9 +34,7 @@ public class EnemyShootingScript : MonoBehaviour {
         else if (shootingType == "sequence" && canShoot == true)
         {
             StartCoroutine("SequenceShoot");
-
         }
-        
     }
 
     private void ShootSequence()

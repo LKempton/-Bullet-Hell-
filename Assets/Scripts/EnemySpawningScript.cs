@@ -12,18 +12,12 @@ public class EnemySpawningScript : MonoBehaviour {
     [SerializeField]
     private int activeEnemies = 0;
 
-    [SerializeField]
-    private bool[,] layerArray = new bool[3, 3];
+    private GameControllerScript gc;
 
     void Start()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int k = 0; k < 3; k++)
-            {
-                layerArray[i, k] = false;
-            }
-        }
+        gc = GameObject.FindWithTag("GameController").GetComponent<GameControllerScript>();
+
         InvokeRepeating("SpawnWave", 2, 10);
     }
 
@@ -39,31 +33,23 @@ public class EnemySpawningScript : MonoBehaviour {
             Vector3 middlePos = new Vector3(spawners[i].position.x + variation, spawners[i].position.y + 10, spawners[i].position.z + variation);
             Vector3 topPos = new Vector3(spawners[i].position.x + variation, spawners[i].position.y + 20, spawners[i].position.z + variation);
 
-            if (activeEnemies <= 9)
+            if (gc.activeEnemies <= 9)
             {
-                if (layer == 1 && layerArray[i , 0] == false)
+                if (layer == 1)
                 {
                     Instantiate(enemies[Random.Range(0, 3)], basePos, spawners[i].rotation);
-                    activeEnemies++;
-
-                    layerArray[i, 0] = true;
+                    gc.activeEnemies++;
                 }
-                else if (layer == 2 && layerArray[i, 1] == false)
+                else if (layer == 2)
                 {
                     Instantiate(enemies[Random.Range(0, 3)], middlePos, spawners[i].rotation);
-                    activeEnemies++;
-
-                    layerArray[i, 1] = true;
+                    gc.activeEnemies++;
                 }
-                else if (layer == 3 && layerArray[i, 2] == false)
+                else if (layer == 3)
                 {
                     Instantiate(enemies[Random.Range(0, 3)], topPos, spawners[i].rotation);
-                    activeEnemies++;
-
-                    layerArray[i, 2] = true;
+                    gc.activeEnemies++;
                 }
-
-                
 
                 layer = Random.Range(1, 3);
             }
