@@ -56,8 +56,7 @@ namespace LK
         {
             if (transform.position.y == 0)
             {
-                gameObject.GetComponent<Renderer>().material.color = bottomLayer;
-                
+                gameObject.GetComponent<Renderer>().material.color = bottomLayer; 
             }
             else if (transform.position.y == 10)
             {

@@ -17,8 +17,14 @@ public class EnemyShootingScript : MonoBehaviour {
     private bool canShoot = true;
     private bool isLooping = false;
 
+    private Color bottomLayer = new Color(0.0f, 0.0f, 255f);
+    private Color middleLayer = new Color(255f, 255f, 0.0f);
+    private Color topLayer = new Color(255f, 0.0f, 0.0f);
+
     void Start()
     {
+        SelectColour();
+
         InvokeRepeating("Shoot", 3f, repeatRate);
     }
 
@@ -70,5 +76,21 @@ public class EnemyShootingScript : MonoBehaviour {
        
 
         canShoot = true;
+    }
+
+    void SelectColour()
+    {
+        if (transform.position.y == 0)
+        {
+            gameObject.GetComponent<Renderer>().material.color = bottomLayer;
+        }
+        else if (transform.position.y == 10)
+        {
+            gameObject.GetComponent<Renderer>().material.color = middleLayer;
+        }
+        else if (transform.position.y == 20)
+        {
+            gameObject.GetComponent<Renderer>().material.color = topLayer;
+        }
     }
 }
