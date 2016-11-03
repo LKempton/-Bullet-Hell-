@@ -25,6 +25,7 @@ GameObject:
   - 23: {fileID: 23000013675875270}
   - 114: {fileID: 114000014289986898}
   - 114: {fileID: 114000013073047790}
+  - 114: {fileID: 114000013762556892}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -213,6 +214,19 @@ MonoBehaviour:
   rocket: {fileID: 1000012233398040, guid: 3a3d57cf7e710d24b9f62aa1f139ab10, type: 2}
   bulletFireRate: 0.2
   rocketFireRate: 5
+--- !u!114 &114000013762556892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010450385192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a67e3dcd0cbd547830d426d19af075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 3
+  gameoverPanel: {fileID: 0}
 --- !u!114 &114000014289986898
 MonoBehaviour:
   m_ObjectHideFlags: 1

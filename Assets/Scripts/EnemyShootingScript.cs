@@ -43,11 +43,6 @@ public class EnemyShootingScript : MonoBehaviour {
         }
     }
 
-    private void ShootSequence()
-    {
-
-    }
-
     IEnumerator SequenceShoot()
     {
         canShoot = false;
