@@ -145,6 +145,46 @@ Prefab:
       propertyPath: gameoverPanel
       value: 
       objectReference: {fileID: 1194391062}
+    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: baseColour.r
+      value: 0.9254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: baseColour.g
+      value: 0.6627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: baseColour.b
+      value: 0.8980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: baseColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: damageColour.r
+      value: 0.97794116
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: damageColour.g
+      value: 0.38830018
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: damageColour.b
+      value: 0.9163367
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: damageColour.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0edf7acc2f06c1a488127f27468e16ce, type: 2}
   m_IsPrefabParent: 0

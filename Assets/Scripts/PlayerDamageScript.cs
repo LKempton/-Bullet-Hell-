@@ -9,6 +9,12 @@ public class PlayerDamageScript : MonoBehaviour {
     [SerializeField]
     private GameObject gameoverPanel;
 
+    [SerializeField]
+    private Color baseColour;
+
+    [SerializeField]
+    private Color damageColour;
+
     void Update()
     {
         if (playerHealth <= 0)
@@ -22,6 +28,8 @@ public class PlayerDamageScript : MonoBehaviour {
         if (col.CompareTag("EnemyBullet"))
         {
             playerHealth -= 1;
+
+            StartCoroutine("DamageColour");
 
             Debug.Log(playerHealth);
         }
@@ -39,5 +47,14 @@ public class PlayerDamageScript : MonoBehaviour {
         Time.timeScale = 1.0f;
 
         Application.LoadLevel(Application.loadedLevel);
+    }
+
+    IEnumerator DamageColour()
+    {
+        gameObject.GetComponent<Renderer>().material.color = damageColour;
+
+        yield return new WaitForSeconds(0.2f);
+
+        gameObject.GetComponent<Renderer>().material.color = baseColour;
     }
 }

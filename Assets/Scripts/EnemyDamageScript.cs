@@ -7,11 +7,15 @@ public class EnemyDamageScript : MonoBehaviour {
     private float health = 5f;
 
     private Color bottomLayer = new Color(0.0f, 0.0f, 255f);
-    public Color bottomLayerDamaged = new Color(115f, 115f, 255f);
     private Color middleLayer = new Color(255f, 255f, 0.0f);
-    public Color middleLayerDamaged = new Color(179f, 179f, 29f);
     private Color topLayer = new Color(255f, 0.0f, 0.0f);
-    public Color topLayerDamaged = new Color(255f, 130f, 130f);
+
+    [SerializeField]
+    private Color bottomLayerDamaged = new Color(115f, 115f, 255f);
+    [SerializeField]
+    private Color middleLayerDamaged = new Color(179f, 179f, 29f);
+    [SerializeField]
+    private Color topLayerDamaged = new Color(255f, 130f, 130f);
 
     private GameControllerScript gc;
     private Color currentColour;
@@ -55,7 +59,7 @@ public class EnemyDamageScript : MonoBehaviour {
         {
             gameObject.GetComponent<Renderer>().material.color = topLayerDamaged;
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
 
             gameObject.GetComponent<Renderer>().material.color = topLayer;
         }
@@ -63,7 +67,7 @@ public class EnemyDamageScript : MonoBehaviour {
         {
             gameObject.GetComponent<Renderer>().material.color = middleLayerDamaged;
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
 
             gameObject.GetComponent<Renderer>().material.color = middleLayer;
         }
