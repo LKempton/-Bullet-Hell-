@@ -22,6 +22,8 @@ public class PlayerDamageScript : MonoBehaviour {
         if (col.CompareTag("EnemyBullet"))
         {
             playerHealth -= 1;
+
+            Debug.Log(playerHealth);
         }
     }
 

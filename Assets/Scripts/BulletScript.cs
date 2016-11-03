@@ -32,7 +32,6 @@ namespace LK
             {
                 SelectColour();
                 bulletRB.velocity = transform.right * speed;
-                Debug.Log("Test");
             }
             else if (isRocket)
             {

@@ -57,8 +57,6 @@ namespace LK
 
                 UpdateColour(currentLayer);
 
-                Debug.Log(currentLayer);
-
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 20, playerTransform.position.z);
             }
 
@@ -68,8 +66,6 @@ namespace LK
 
                 UpdateColour(currentLayer);
 
-                Debug.Log(currentLayer);
-
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 10, playerTransform.position.z);
             }
 
@@ -78,8 +74,6 @@ namespace LK
                 currentLayer = 3;
 
                 UpdateColour(currentLayer);
-
-                Debug.Log(currentLayer);
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 20, playerTransform.position.z);
             }

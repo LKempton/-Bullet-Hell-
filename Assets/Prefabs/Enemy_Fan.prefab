@@ -307,6 +307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 4
+  bottomLayerDamaged: {r: 0.43382353, g: 0.43382353, b: 1, a: 1}
+  middleLayerDamaged: {r: 0.50735295, g: 0.50735295, b: 0.0522275, a: 1}
+  topLayerDamaged: {r: 1, g: 0.47794116, b: 0.47794116, a: 1}
 --- !u!114 &114000013016006454
 MonoBehaviour:
   m_ObjectHideFlags: 1

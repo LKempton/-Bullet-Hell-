@@ -130,11 +130,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
-        type: 2}
-      propertyPath: gameoverPanel
-      value: 
-      objectReference: {fileID: 1194391062}
     - target: {fileID: 114000014289986898, guid: 0edf7acc2f06c1a488127f27468e16ce,
         type: 2}
       propertyPath: borderTop
@@ -145,6 +140,11 @@ Prefab:
       propertyPath: borderBottom
       value: 
       objectReference: {fileID: 318691769}
+    - target: {fileID: 114000013762556892, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: gameoverPanel
+      value: 
+      objectReference: {fileID: 1194391062}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0edf7acc2f06c1a488127f27468e16ce, type: 2}
   m_IsPrefabParent: 0
