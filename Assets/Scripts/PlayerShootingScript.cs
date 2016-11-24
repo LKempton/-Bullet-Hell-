@@ -13,6 +13,7 @@ namespace LK
         private Transform rocketSpawner;
         [SerializeField]
         private GameObject bullet;
+        private GameObject[] bulletArray = new GameObject[50];
         [SerializeField]
         private GameObject rocket;
 
@@ -27,6 +28,15 @@ namespace LK
 
         private float nextFireRocket = 0.0f;
 
+        void Start()
+        {
+            for (int i = 0; i < bulletArray.Length; i++)
+            {
+                bulletArray[i] = Instantiate(bullet);
+                bulletArray[i].SetActive(false);
+            }
+        }
+
         void Update()
         {
             if (Input.GetMouseButton(0) && Time.time > nextFireBullet)
@@ -35,13 +45,35 @@ namespace LK
 
                 if (isFiringLeft == true)
                 {
-                    Instantiate(bullet, bulletSpawnerLeft.position, bulletSpawnerLeft.rotation);
+                    for (int i = 0; i < bulletArray.Length; i++)
+                    {
+                        if (!bulletArray[i].activeInHierarchy)
+                        {
+                            bulletArray[i].transform.position = bulletSpawnerLeft.transform.position;
+                            bulletArray[i].transform.rotation = bulletSpawnerLeft.transform.rotation;
+                            bulletArray[i].SetActive(true);
+
+                            break;
+                        }
+                    }
+                   
+                   
 
                     isFiringLeft = false;
                 }
                 else if (isFiringLeft == false)
                 {
-                    Instantiate(bullet, bulletSpawnerRight.position, bulletSpawnerRight.rotation);
+                    for (int i = 0; i < bulletArray.Length; i++)
+                    {
+                        if (!bulletArray[i].activeInHierarchy)
+                        {
+                            bulletArray[i].transform.position = bulletSpawnerRight.transform.position;
+                            bulletArray[i].transform.rotation = bulletSpawnerRight.transform.rotation;
+                            bulletArray[i].SetActive(true);
+
+                            break;
+                        }
+                    }
 
                     isFiringLeft = true;
                 }
