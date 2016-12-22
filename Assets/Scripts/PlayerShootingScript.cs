@@ -42,7 +42,7 @@ namespace LK
             if (Input.GetMouseButton(0) && Time.time > nextFireBullet)
             {
                 nextFireBullet = Time.time + bulletFireRate;
-
+   
                 if (isFiringLeft == true)
                 {
                     for (int i = 0; i < bulletArray.Length; i++)
@@ -56,9 +56,6 @@ namespace LK
                             break;
                         }
                     }
-                   
-                   
-
                     isFiringLeft = false;
                 }
                 else if (isFiringLeft == false)

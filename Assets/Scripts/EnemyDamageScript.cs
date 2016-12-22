@@ -5,6 +5,10 @@ public class EnemyDamageScript : MonoBehaviour {
 
     [SerializeField]
     private float health = 5f;
+    [SerializeField]
+    private int rndChance = 10;
+    [SerializeField]
+    private GameObject[] powerups = new GameObject[1];
 
     private Color bottomLayer = new Color(0.0f, 0.0f, 255f);
     private Color middleLayer = new Color(255f, 255f, 0.0f);
@@ -43,14 +47,29 @@ public class EnemyDamageScript : MonoBehaviour {
 
     void Update()
     {
+        int rng;
+        // Detects if the enemy health has dropped below 0 and destroys them if it has.
         if (health <= 0)
         {
-            StopAllCoroutines();
+            rng = Random.Range(1, 100);
+            Debug.Log(rng);
+            if (rng <= rndChance)
+            {
+                SpawnPowerup();
+            }
+
+            StopCoroutine("DamageColour");
 
             gc.activeEnemies--;
 
             Destroy(gameObject);
         }
+    }
+
+    private void SpawnPowerup()
+    {
+        // Spawn a random powerup on the enemies position.
+        Instantiate(powerups[Random.Range(0, powerups.Length - 1)], transform.position, transform.rotation);
     }
 
     IEnumerator DamageColour()
