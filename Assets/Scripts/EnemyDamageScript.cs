@@ -53,7 +53,7 @@ public class EnemyDamageScript : MonoBehaviour {
         {
             rng = Random.Range(1, 100);
             Debug.Log(rng);
-            if (rng <= rndChance)
+            if (rng <= rndChance && gc.activePowerups == 0)
             {
                 SpawnPowerup();
             }

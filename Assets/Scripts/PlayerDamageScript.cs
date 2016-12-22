@@ -57,4 +57,13 @@ public class PlayerDamageScript : MonoBehaviour {
 
         gameObject.GetComponent<Renderer>().material.color = baseColour;
     }
+
+    public void SetPlayerHealth(int val)
+    {
+        if (playerHealth < 3)
+        {
+            Debug.Log("player health up");
+            playerHealth += val;
+        }
+    }
 }

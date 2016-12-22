@@ -24,11 +24,6 @@ namespace LK
         private Color middleLayer = new Color(255f, 255f, 0.0f);
         private Color topLayer = new Color(255f, 0.0f, 0.0f);
 
-        void Strt()
-        {
-            
-        }
-
         void OnEnable()
         {
             bulletRB = GetComponent<Rigidbody>();

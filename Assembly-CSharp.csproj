@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\PlayerDamageScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerShootingScript.cs" />
+     <Compile Include="Assets\Scripts\PowerupBehaviourScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
