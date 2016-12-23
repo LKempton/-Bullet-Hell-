@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d8acac955595142ac6f4a1a53dc7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  health: 3
   rndChance: 10
   powerups:
   - {fileID: 1000011190062414, guid: 80d120aac84e91f459d6b6792edb3db8, type: 2}

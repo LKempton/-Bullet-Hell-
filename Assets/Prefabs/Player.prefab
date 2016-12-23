@@ -227,6 +227,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 3
   gameoverPanel: {fileID: 0}
+  baseColour: {r: 1, g: 0, b: 0.8955221, a: 1}
+  damageColour: {r: 0.9264706, g: 0.5790441, b: 0.8901722, a: 1}
+  heartUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114000014289986898
 MonoBehaviour:
   m_ObjectHideFlags: 1

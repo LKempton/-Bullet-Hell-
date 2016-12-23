@@ -53,9 +53,11 @@ public class EnemyDamageScript : MonoBehaviour {
         {
             rng = Random.Range(1, 100);
             Debug.Log(rng);
-            if (rng <= rndChance && gc.activePowerups == 0)
+            if ((rng <= rndChance && gc.activePowerups == 0) || gc.dropNext == true)
             {
                 SpawnPowerup();
+
+                gc.PowerupDrop();
             }
 
             StopCoroutine("DamageColour");
