@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerDamageScript : MonoBehaviour {
 
     [SerializeField]
-    private float playerHealth = 3.0f;
+    private int playerHealth = 3;
 
     [SerializeField]
     private GameObject gameoverPanel;
@@ -14,6 +14,9 @@ public class PlayerDamageScript : MonoBehaviour {
 
     [SerializeField]
     private Color damageColour;
+
+    [SerializeField]
+    private GameObject[] heartUI = new GameObject[3];
 
     void Update()
     {
@@ -29,10 +32,36 @@ public class PlayerDamageScript : MonoBehaviour {
         {
             playerHealth -= 1;
 
+            ChangeHealthHeart(true);
+
             StartCoroutine("DamageColour");
 
             Debug.Log(playerHealth);
         }
+    }
+
+    void ChangeHealthHeart(bool isRemoving)
+    {
+        if (isRemoving == true)
+        {
+            switch (playerHealth)
+            {
+                case 2:
+                    heartUI[2].SetActive(false);
+                    break;
+                case 1:
+                    heartUI[1].SetActive(false);
+                    break;
+                case 0:
+                    heartUI[0].SetActive(false);
+                    break;
+            }
+        }
+        else if (isRemoving == false)
+        {
+            heartUI[playerHealth - 1].SetActive(true);
+        }
+        
     }
 
     void Die()
@@ -64,6 +93,8 @@ public class PlayerDamageScript : MonoBehaviour {
         {
             Debug.Log("player health up");
             playerHealth += val;
+
+            ChangeHealthHeart(false);
         }
     }
 }
