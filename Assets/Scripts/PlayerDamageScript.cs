@@ -16,6 +16,10 @@ public class PlayerDamageScript : MonoBehaviour {
     private Color damageColour;
 
     [SerializeField]
+    private float graceTime = 1.0f;
+    private bool isDamageable = true;
+
+    [SerializeField]
     private GameObject[] heartUI = new GameObject[3];
 
     void Update()
@@ -28,8 +32,11 @@ public class PlayerDamageScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("EnemyBullet"))
+        if (col.CompareTag("EnemyBullet") && isDamageable == true)
         {
+            isDamageable = false;
+            StartCoroutine(GracePeriod());
+
             playerHealth -= 1;
 
             ChangeHealthHeart(true);
@@ -61,7 +68,6 @@ public class PlayerDamageScript : MonoBehaviour {
         {
             heartUI[playerHealth - 1].SetActive(true);
         }
-        
     }
 
     void Die()
@@ -85,6 +91,13 @@ public class PlayerDamageScript : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
 
         gameObject.GetComponent<Renderer>().material.color = baseColour;
+    }
+
+    IEnumerator GracePeriod()
+    {
+        yield return new WaitForSeconds(graceTime);
+
+        isDamageable = true;
     }
 
     public void SetPlayerHealth(int val)
