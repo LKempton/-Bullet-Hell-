@@ -39,7 +39,7 @@ namespace LK
 
         void Update()
         {
-            if (Input.GetMouseButton(0) && Time.time > nextFireBullet)
+            if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && Time.time > nextFireBullet)
             {
                 nextFireBullet = Time.time + bulletFireRate;
    
