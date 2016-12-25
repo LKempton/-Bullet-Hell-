@@ -310,6 +310,7 @@ MonoBehaviour:
   rndChance: 10
   powerups:
   - {fileID: 1000011190062414, guid: 80d120aac84e91f459d6b6792edb3db8, type: 2}
+  - {fileID: 1000010100398764, guid: 1059300de9577364a872824e0f710e47, type: 2}
   bottomLayerDamaged: {r: 0.43137255, g: 0.43137255, b: 1, a: 1}
   middleLayerDamaged: {r: 0.5058824, g: 0.5058824, b: 0.050980393, a: 1}
   topLayerDamaged: {r: 1, g: 0.4745098, b: 0.4745098, a: 1}

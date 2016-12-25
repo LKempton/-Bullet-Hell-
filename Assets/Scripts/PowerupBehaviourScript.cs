@@ -56,6 +56,12 @@ public class PowerupBehaviourScript : MonoBehaviour {
                     gc.activePowerups--;
                     Destroy(gameObject);
                     break;
+
+                case 1:
+                    ShieldUp();
+                    gc.activePowerups--;
+                    Destroy(gameObject);
+                    break;
             }
         }
     }
@@ -63,6 +69,11 @@ public class PowerupBehaviourScript : MonoBehaviour {
     void HealthUp()
     {
         pd.SetPlayerHealth(1);
+    }
+
+    void ShieldUp()
+    {
+        pd.SetShieldStatus();
     }
 
 

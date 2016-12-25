@@ -8,6 +8,9 @@ public class PlayerDamageScript : MonoBehaviour {
 
     [SerializeField]
     private GameObject gameoverPanel;
+    [SerializeField]
+    private GameObject shield;
+    private bool isShielded = false;
 
     [SerializeField]
     private Color baseColour;
@@ -32,7 +35,7 @@ public class PlayerDamageScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("EnemyBullet") && isDamageable == true)
+        if (col.CompareTag("EnemyBullet") && isDamageable == true && isShielded == false)
         {
             isDamageable = false;
             StartCoroutine(GracePeriod());
@@ -109,5 +112,21 @@ public class PlayerDamageScript : MonoBehaviour {
 
             ChangeHealthHeart(false);
         }
+    }
+
+    public void SetShieldStatus()
+    {
+        isShielded = true;
+        shield.SetActive(true);
+
+        StopCoroutine("ShieldTime");
+        StartCoroutine("ShieldTime");
+    }
+
+    IEnumerator ShieldTime()
+    {
+        yield return new WaitForSeconds(5.0f);
+        isShielded = false;
+        shield.SetActive(false);
     }
 }
