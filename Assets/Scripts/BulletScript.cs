@@ -30,7 +30,7 @@ namespace LK
 
             if (!isRocket)
             {
-                SelectColour();
+                //SelectColour();
                 bulletRB.velocity = transform.right * speed;
             }
             else if (isRocket)
