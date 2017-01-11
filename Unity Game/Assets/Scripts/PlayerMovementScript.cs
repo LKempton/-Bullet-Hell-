@@ -88,6 +88,11 @@ namespace LK
 
             movement.Normalize();
 
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                movement.z = movement.z * 1.5f;
+            }
+        
             rb.velocity = movement * speed;
 
             rb.position = new Vector3(Mathf.Clamp(rb.position.x, boundary.xMin, boundary.xMax), playerTransform.position.y , Mathf.Clamp(rb.position.z, boundary.zMin, boundary.zMax));
