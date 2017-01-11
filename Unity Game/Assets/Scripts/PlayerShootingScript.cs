@@ -23,15 +23,15 @@ namespace LK
         private float rocketFireRate;
 
         private bool m_isFiringLeft = true;
-
         private float m_nextFireBullet = 0.0f;
-
         private float m_nextFireRocket = 0.0f;
-
         private bool m_isDoubleShot = false;
+
+        private AudioSource m_audio;
 
         void Start()
         {
+            m_audio = GetComponent<AudioSource>();
             for (int i = 0; i < bulletArray.Length; i++)
             {
                 bulletArray[i] = Instantiate(bullet);
@@ -55,6 +55,7 @@ namespace LK
                             bulletArray[i].transform.rotation = bulletSpawnerLeft.transform.rotation;
                             bulletArray[i].SetActive(true);
 
+                            m_audio.Play();
                             break;
                         }
                     }
@@ -70,6 +71,7 @@ namespace LK
                             bulletArray[i].transform.rotation = bulletSpawnerRight.transform.rotation;
                             bulletArray[i].SetActive(true);
 
+                            m_audio.Play();
                             break;
                         }
                     }
