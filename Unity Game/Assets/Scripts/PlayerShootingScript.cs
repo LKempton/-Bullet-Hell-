@@ -22,16 +22,23 @@ namespace LK
         [SerializeField]
         private float rocketFireRate;
 
+        [SerializeField]
+        private float shakeMagnitude;
+        [SerializeField]
+        private float shakeTime;
+
         private bool m_isFiringLeft = true;
         private float m_nextFireBullet = 0.0f;
         private float m_nextFireRocket = 0.0f;
         private bool m_isDoubleShot = false;
 
         private SoundScript m_ss;
+        private CameraShaker m_camShake;
 
         void Start()
         {
             m_ss = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+            m_camShake = GameObject.FindWithTag("ShakeableCamera").GetComponent<CameraShaker>();
             for (int i = 0; i < bulletArray.Length; i++)
             {
                 bulletArray[i] = Instantiate(bullet);
@@ -78,6 +85,8 @@ namespace LK
 
                     m_isFiringLeft = true;
                 }
+
+                m_camShake.Shake(shakeMagnitude, shakeTime);
             }
 
             if (Input.GetMouseButton(1) && Time.time > m_nextFireRocket)
@@ -85,6 +94,8 @@ namespace LK
                 m_nextFireRocket = Time.time + rocketFireRate;
 
                 Instantiate(rocket, rocketSpawner.position, rocketSpawner.rotation);
+
+                m_camShake.Shake(shakeMagnitude + 0.1f, shakeTime + 0.1f);
 
                 m_ss.PlaySoundClip(1);
             }
