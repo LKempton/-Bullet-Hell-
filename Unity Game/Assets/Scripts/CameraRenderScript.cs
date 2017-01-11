@@ -5,7 +5,7 @@ public class CameraRenderScript : MonoBehaviour {
 
     private Camera m_thisCamera;
 
-    void Start()
+    void Awake()
     {
         m_thisCamera = gameObject.GetComponent<Camera>();
     }

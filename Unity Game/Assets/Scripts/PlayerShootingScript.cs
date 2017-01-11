@@ -27,11 +27,11 @@ namespace LK
         private float m_nextFireRocket = 0.0f;
         private bool m_isDoubleShot = false;
 
-        private AudioSource m_audio;
+        private SoundScript m_ss;
 
         void Start()
         {
-            m_audio = GetComponent<AudioSource>();
+            m_ss = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
             for (int i = 0; i < bulletArray.Length; i++)
             {
                 bulletArray[i] = Instantiate(bullet);
@@ -55,7 +55,7 @@ namespace LK
                             bulletArray[i].transform.rotation = bulletSpawnerLeft.transform.rotation;
                             bulletArray[i].SetActive(true);
 
-                            m_audio.Play();
+                            m_ss.PlaySoundClip(0);
                             break;
                         }
                     }
@@ -71,7 +71,7 @@ namespace LK
                             bulletArray[i].transform.rotation = bulletSpawnerRight.transform.rotation;
                             bulletArray[i].SetActive(true);
 
-                            m_audio.Play();
+                            m_ss.PlaySoundClip(0);
                             break;
                         }
                     }
@@ -85,6 +85,8 @@ namespace LK
                 m_nextFireRocket = Time.time + rocketFireRate;
 
                 Instantiate(rocket, rocketSpawner.position, rocketSpawner.rotation);
+
+                m_ss.PlaySoundClip(1);
             }
         }
 

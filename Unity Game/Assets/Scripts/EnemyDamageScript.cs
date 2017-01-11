@@ -16,12 +16,18 @@ public class EnemyDamageScript : MonoBehaviour {
     [SerializeField]
     private Color damagedColour = new Color(0, 0, 0);
 
-    private GameControllerScript gc;
+    private GameControllerScript m_gc;
+    private SoundScript m_ss;
+
+    private GameObject m_player;
     
 
     void Start()
     {
-        gc = GameObject.FindWithTag("GameController").GetComponent<GameControllerScript>();
+        m_gc = GameObject.FindWithTag("GameController").GetComponent<GameControllerScript>();
+        m_ss = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+
+        m_player = GameObject.FindWithTag("Player");
 
         m_enemySprite = GetComponentInChildren<SpriteRenderer>();
 
@@ -48,18 +54,23 @@ public class EnemyDamageScript : MonoBehaviour {
         // Detects if the enemy health has dropped below 0 and destroys them if it has.
         if (health <= 0)
         {
+            if (gameObject.layer == m_player.layer)
+            {
+                m_ss.PlaySoundClip(2);
+            }
+            
             rng = Random.Range(1, 100);
             Debug.Log(rng);
-            if ((rng <= rndChance && gc.activePowerups == 0) || gc.dropNext == true)
+            if ((rng <= rndChance && m_gc.activePowerups == 0) || m_gc.dropNext == true)
             {
                 SpawnPowerup();
 
-                gc.PowerupDrop();
+                m_gc.PowerupDrop();
             }
 
             StopCoroutine("DamageColour");
 
-            gc.activeEnemies--;
+            m_gc.activeEnemies--;
 
             Destroy(gameObject);
         }

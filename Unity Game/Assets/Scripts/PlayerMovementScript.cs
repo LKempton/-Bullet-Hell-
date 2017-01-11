@@ -58,31 +58,14 @@ namespace LK
 
                 UpdateColour(currentLayer);
 
-                Debug.Log(currentLayer);
-
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 10, playerTransform.position.z);
 
-                m_cl.SetLayerRecursively(gameObject, currentLayer + 9);
+                m_cl.SetLayerRecursively(gameObject, SelectLayer());
                 UpdateRenderLayers(currentLayer);
 
                 // Set an amount for shield for when the player changes layer.
                 m_pd.SetShieldStatus(1);
 
-            }
-
-            else if (Input.GetKeyDown(KeyCode.Q) && currentLayer == 3)
-            {
-                currentLayer = 1;
-
-                UpdateColour(currentLayer);
-
-                playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 20, playerTransform.position.z);
-
-                m_cl.SetLayerRecursively(gameObject, currentLayer + 9);
-                UpdateRenderLayers(currentLayer);
-
-                // Set an amount for shield for when the player changes layer.
-                m_pd.SetShieldStatus(1);
             }
 
             else if (Input.GetKeyDown(KeyCode.E) && currentLayer > 1)
@@ -93,29 +76,13 @@ namespace LK
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 10, playerTransform.position.z);
 
-                m_cl.SetLayerRecursively(gameObject, currentLayer + 9);
+                m_cl.SetLayerRecursively(gameObject, SelectLayer());
                 UpdateRenderLayers(currentLayer);
 
                 // Set an amount for shield for when the player changes layer.
                 m_pd.SetShieldStatus(1);
             }
-
-            else if (Input.GetKeyDown(KeyCode.E) && currentLayer == 1)
-            {
-                currentLayer = 3;
-
-                UpdateColour(currentLayer);
-
-                playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 20, playerTransform.position.z);
-
-                m_cl.SetLayerRecursively(gameObject, currentLayer + 9);
-                UpdateRenderLayers(currentLayer);
-
-                // Set an amount for shield for when the player changes layer.
-                m_pd.SetShieldStatus(1);
-            }
-
-            
+ 
         }
 
         void FixedUpdate()
@@ -171,6 +138,23 @@ namespace LK
             {
                 m_cr.ChangeCullingMask(8);
             }
+        }
+
+        private int SelectLayer()
+        {
+            if (transform.position.y > -0.5 && transform.position.y < 0.5)
+            {
+                return 10;
+            }
+            else if (transform.position.y > -10.5 && transform.position.y < 10.5)
+            {
+                return 9;
+            }
+            else if (transform.position.y > -20.5 && transform.position.y < 20.5)
+            {
+                return 8;
+            }
+            return 10;
         }
     }
 }
