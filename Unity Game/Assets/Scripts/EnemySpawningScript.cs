@@ -51,7 +51,7 @@ public class EnemySpawningScript : MonoBehaviour {
                     gc.activeEnemies++;
                 }
 
-                layer = Random.Range(1, 3);
+                layer = Random.Range(1, 4);
             }
             
         }

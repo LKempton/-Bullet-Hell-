@@ -160,13 +160,17 @@ Prefab:
       propertyPath: heartUI.Array.data[2]
       value: 
       objectReference: {fileID: 564467602}
-    - target: {fileID: 1000012051472008, guid: 0edf7acc2f06c1a488127f27468e16ce, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 4000012916460678, guid: 0edf7acc2f06c1a488127f27468e16ce, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.33333334
       objectReference: {fileID: 0}
-    - target: {fileID: 1000010450385192, guid: 0edf7acc2f06c1a488127f27468e16ce, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 4000012916460678, guid: 0edf7acc2f06c1a488127f27468e16ce, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012916460678, guid: 0edf7acc2f06c1a488127f27468e16ce, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.33333334
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0edf7acc2f06c1a488127f27468e16ce, type: 2}

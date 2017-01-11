@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 863f621bed4684841b36d14776c429e4
-timeCreated: 1482873400
+timeCreated: 1484152848
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -66,10 +66,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 821
-        width: 150
-        height: 148
+        x: 485
+        y: 1451
+        width: 422
+        height: 423
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -79,10 +79,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_1
       rect:
         serializedVersion: 2
-        x: 220
-        y: 810
-        width: 160
-        height: 160
+        x: 1048
+        y: 1424
+        width: 450
+        height: 450
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -92,10 +92,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_2
       rect:
         serializedVersion: 2
-        x: 430
-        y: 820
-        width: 240
-        height: 140
+        x: 298
+        y: 974
+        width: 677
+        height: 395
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -105,10 +105,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_3
       rect:
         serializedVersion: 2
-        x: 750
-        y: 829
-        width: 160
-        height: 111
+        x: 1199
+        y: 1002
+        width: 451
+        height: 310
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,10 +118,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_4
       rect:
         serializedVersion: 2
-        x: 40
-        y: 690
-        width: 90
-        height: 90
+        x: 96
+        y: 442
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,10 +131,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_5
       rect:
         serializedVersion: 2
-        x: 139
-        y: 690
-        width: 91
-        height: 90
+        x: 295
+        y: 441
+        width: 181
+        height: 181
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_6
       rect:
         serializedVersion: 2
-        x: 240
-        y: 690
-        width: 90
-        height: 90
+        x: 496
+        y: 442
+        width: 180
+        height: 181
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,10 +157,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_7
       rect:
         serializedVersion: 2
-        x: 360
-        y: 690
-        width: 40
-        height: 90
+        x: 735
+        y: 441
+        width: 80
+        height: 180
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,10 +170,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_8
       rect:
         serializedVersion: 2
-        x: 430
-        y: 690
-        width: 40
-        height: 90
+        x: 876
+        y: 442
+        width: 80
+        height: 180
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,10 +183,10 @@ TextureImporter:
       name: GGSpriteSheetScaled_9
       rect:
         serializedVersion: 2
-        x: 510
-        y: 670
-        width: 80
-        height: 120
+        x: 1036
+        y: 402
+        width: 159
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
