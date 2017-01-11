@@ -19,11 +19,15 @@ public class PowerupBehaviourScript : MonoBehaviour {
 
     private PlayerDamageScript pd;
     private GameControllerScript gc;
+    private LK.PlayerShootingScript ps;
 
     void Start()
     {
+        // Find and make reference to the scripts at start so they can be accessed later.
         pd = GameObject.FindWithTag("Player").GetComponent<PlayerDamageScript>();
+        ps = GameObject.FindWithTag("Player").GetComponent<LK.PlayerShootingScript>();
         gc = GameObject.FindWithTag("GameController").GetComponent<GameControllerScript>();
+
         powerupRB = GetComponent<Rigidbody>();
 
         gc.activePowerups++;
@@ -62,6 +66,12 @@ public class PowerupBehaviourScript : MonoBehaviour {
                     gc.activePowerups--;
                     Destroy(gameObject);
                     break;
+                    
+                case 2:
+                    DoubleShot();
+                    gc.activePowerups--;
+                    Destroy(gameObject);
+                    break;
             }
         }
     }
@@ -74,6 +84,11 @@ public class PowerupBehaviourScript : MonoBehaviour {
     void ShieldUp()
     {
         pd.SetShieldStatus();
+    }
+
+    void DoubleShot()
+    {
+        ps.DoubleShot();
     }
 
 

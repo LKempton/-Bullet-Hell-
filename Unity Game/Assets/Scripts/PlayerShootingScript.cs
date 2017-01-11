@@ -22,11 +22,13 @@ namespace LK
         [SerializeField]
         private float rocketFireRate;
 
-        private bool isFiringLeft = true;
+        private bool m_isFiringLeft = true;
 
-        private float nextFireBullet = 0.0f;
+        private float m_nextFireBullet = 0.0f;
 
-        private float nextFireRocket = 0.0f;
+        private float m_nextFireRocket = 0.0f;
+
+        private bool m_isDoubleShot = false;
 
         void Start()
         {
@@ -39,11 +41,11 @@ namespace LK
 
         void Update()
         {
-            if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && Time.time > nextFireBullet)
+            if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && Time.time > m_nextFireBullet)
             {
-                nextFireBullet = Time.time + bulletFireRate;
-   
-                if (isFiringLeft == true)
+                m_nextFireBullet = Time.time + bulletFireRate;
+
+                if (m_isFiringLeft == true)
                 {
                     for (int i = 0; i < bulletArray.Length; i++)
                     {
@@ -56,9 +58,9 @@ namespace LK
                             break;
                         }
                     }
-                    isFiringLeft = false;
+                    m_isFiringLeft = false;
                 }
-                else if (isFiringLeft == false)
+                else if (m_isFiringLeft == false)
                 {
                     for (int i = 0; i < bulletArray.Length; i++)
                     {
@@ -72,16 +74,29 @@ namespace LK
                         }
                     }
 
-                    isFiringLeft = true;
+                    m_isFiringLeft = true;
                 }
             }
 
-            if (Input.GetMouseButton(1) && Time.time > nextFireRocket)
+            if (Input.GetMouseButton(1) && Time.time > m_nextFireRocket)
             {
-                nextFireRocket = Time.time + rocketFireRate;
+                m_nextFireRocket = Time.time + rocketFireRate;
 
                 Instantiate(rocket, rocketSpawner.position, rocketSpawner.rotation);
             }
+        }
+
+        public void DoubleShot()
+        {
+            bulletFireRate -= 0.1f;  
+
+            StartCoroutine(PowerupTime());
+        }
+
+        IEnumerator PowerupTime()
+        {
+            yield return new WaitForSeconds(5);
+            bulletFireRate += 0.1f;
         }
 
     }
