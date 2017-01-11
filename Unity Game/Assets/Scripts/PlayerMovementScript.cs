@@ -32,10 +32,22 @@ namespace LK
         private Color middleLayer = new Color(255f, 255f, 0.0f);
         private Color topLayer = new Color(255f, 0.0f, 0.0f);
 
+        private CameraRenderScript m_cr;
+        private ChangeLayerScript m_cl;
+        private PlayerDamageScript m_pd;
+        
+
         void Start()
         {
             rb = GetComponent<Rigidbody>();
             playerTransform = GetComponent<Transform>();
+
+            // Find the renderinmg script located on the main camera.
+            m_cr = GameObject.FindWithTag("MainCamera").GetComponent<CameraRenderScript>();
+            m_cl = GameObject.FindWithTag("GameController").GetComponent<ChangeLayerScript>();
+            m_pd = GameObject.FindWithTag("Player").GetComponent<PlayerDamageScript>();
+
+            UpdateRenderLayers(currentLayer);
         }
 
         void Update()
@@ -49,6 +61,13 @@ namespace LK
                 Debug.Log(currentLayer);
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 10, playerTransform.position.z);
+
+                m_cl.SetLayerRecursively(gameObject, currentLayer + 9);
+                UpdateRenderLayers(currentLayer);
+
+                // Set an amount for shield for when the player changes layer.
+                m_pd.SetShieldStatus(1);
+
             }
 
             else if (Input.GetKeyDown(KeyCode.Q) && currentLayer == 3)
@@ -58,6 +77,12 @@ namespace LK
                 UpdateColour(currentLayer);
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 20, playerTransform.position.z);
+
+                m_cl.SetLayerRecursively(gameObject, currentLayer + 9);
+                UpdateRenderLayers(currentLayer);
+
+                // Set an amount for shield for when the player changes layer.
+                m_pd.SetShieldStatus(1);
             }
 
             else if (Input.GetKeyDown(KeyCode.E) && currentLayer > 1)
@@ -67,6 +92,12 @@ namespace LK
                 UpdateColour(currentLayer);
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 10, playerTransform.position.z);
+
+                m_cl.SetLayerRecursively(gameObject, currentLayer + 9);
+                UpdateRenderLayers(currentLayer);
+
+                // Set an amount for shield for when the player changes layer.
+                m_pd.SetShieldStatus(1);
             }
 
             else if (Input.GetKeyDown(KeyCode.E) && currentLayer == 1)
@@ -76,7 +107,15 @@ namespace LK
                 UpdateColour(currentLayer);
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 20, playerTransform.position.z);
+
+                m_cl.SetLayerRecursively(gameObject, currentLayer + 9);
+                UpdateRenderLayers(currentLayer);
+
+                // Set an amount for shield for when the player changes layer.
+                m_pd.SetShieldStatus(1);
             }
+
+            
         }
 
         void FixedUpdate()
@@ -114,6 +153,23 @@ namespace LK
                     borderBottom.GetComponent<Image>().color = topLayer;
                     borderTop.GetComponent<Image>().color = topLayer;
                     break;
+            }
+        }
+
+        // Calls the method in the CameraRenderScript that makes only objects on the same layer visible.
+        void UpdateRenderLayers(int layer)
+        {
+            if (currentLayer == 1)
+            {
+                m_cr.ChangeCullingMask(10);
+            }
+            else if (currentLayer == 2)
+            {
+                m_cr.ChangeCullingMask(9);
+            }
+            else if (currentLayer == 3)
+            {
+                m_cr.ChangeCullingMask(8);
             }
         }
     }

@@ -20,17 +20,17 @@ namespace LK
         // Variable to store when the bullet was created.
         private float timeCreated;
 
-        private Color bottomLayer = new Color(0.0f, 0.0f, 255f);
-        private Color middleLayer = new Color(255f, 255f, 0.0f);
-        private Color topLayer = new Color(255f, 0.0f, 0.0f);
+        private ChangeLayerScript m_cl;
 
         void OnEnable()
         {
             bulletRB = GetComponent<Rigidbody>();
 
+            m_cl = GameObject.FindWithTag("GameController").GetComponent<ChangeLayerScript>();
+
             if (!isRocket)
             {
-                //SelectColour();
+                m_cl.SetLayerRecursively(gameObject, SelectLayer());
                 bulletRB.velocity = transform.right * speed;
             }
             else if (isRocket)
@@ -51,20 +51,21 @@ namespace LK
             }
         }
 
-        void SelectColour()
+        private int SelectLayer()
         {
-            if (transform.position.y == 0)
+            if (transform.position.y > -0.5 && transform.position.y < 0.5)
             {
-                gameObject.GetComponent<Renderer>().material.color = bottomLayer; 
+                return 10;
             }
-            else if (transform.position.y == 10)
+            else if (transform.position.y > -10.5 && transform.position.y < 10.5)
             {
-                gameObject.GetComponent<Renderer>().material.color = middleLayer;
+                return 9;
             }
-            else if (transform.position.y == 20)
+            else if (transform.position.y > -20.5 && transform.position.y < 20.5)
             {
-                gameObject.GetComponent<Renderer>().material.color = topLayer;
+                return 8;
             }
+            return 10;
         }
 
     }

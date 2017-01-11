@@ -114,18 +114,18 @@ public class PlayerDamageScript : MonoBehaviour {
         }
     }
 
-    public void SetShieldStatus()
+    public void SetShieldStatus(int val)
     {
         isShielded = true;
         shield.SetActive(true);
 
         StopCoroutine("ShieldTime");
-        StartCoroutine("ShieldTime");
+        StartCoroutine(ShieldTime(val));
     }
 
-    IEnumerator ShieldTime()
+    IEnumerator ShieldTime(int amount)
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(amount);
         isShielded = false;
         shield.SetActive(false);
     }
