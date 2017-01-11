@@ -14,16 +14,16 @@ public class EnemyShootingScript : MonoBehaviour {
     [SerializeField]
     private string shootingType = "instant";
 
-    private bool canShoot = true;
-    private bool isLooping = false;
+    private bool m_canShoot = true;
+    private bool m_isLooping = false;
 
-    private Color bottomLayer = new Color(0.0f, 0.0f, 255f);
-    private Color middleLayer = new Color(255f, 255f, 0.0f);
-    private Color topLayer = new Color(255f, 0.0f, 0.0f);
+    private GameObject m_player;
+    private SoundScript m_ss;
 
     void Start()
     {
-        SelectColour();
+        m_player = GameObject.FindWithTag("Player");
+        m_ss = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
 
         InvokeRepeating("Shoot", 3f, repeatRate);
     }
@@ -36,8 +36,12 @@ public class EnemyShootingScript : MonoBehaviour {
             {
                 Instantiate(bullet, spawners[i].position, spawners[i].rotation);
             }
+            if (gameObject.layer == m_player.layer)
+            {
+                m_ss.PlaySoundClip(3);
+            }
         }
-        else if (shootingType == "sequence" && canShoot == true)
+        else if (shootingType == "sequence" && m_canShoot == true)
         {
             StartCoroutine("SequenceShoot");
         }
@@ -45,47 +49,41 @@ public class EnemyShootingScript : MonoBehaviour {
 
     IEnumerator SequenceShoot()
     {
-        canShoot = false;
+        m_canShoot = false;
 
-        if (!isLooping)
+        if (!m_isLooping)
         {
             for (int k = 0; k < spawners.Length; k++)
             {
                 yield return new WaitForSeconds(0.2f);
 
                 Instantiate(bullet, spawners[k].position, spawners[k].rotation);
+
+                if (gameObject.layer == m_player.layer)
+                {
+                    m_ss.PlaySoundClip(3);
+                }
             }
-            isLooping = true;
+            m_isLooping = true;
         }
 
-        else if (isLooping)
+        else if (m_isLooping)
         {
             for (int k = spawners.Length - 1; k >= 0; k--)
             {
                 yield return new WaitForSeconds(0.2f);
 
                 Instantiate(bullet, spawners[k].position, spawners[k].rotation);
+
+                if (gameObject.layer == m_player.layer)
+                {
+                    m_ss.PlaySoundClip(3);
+                }
             }
-            isLooping = false;
+            m_isLooping = false;
         }
        
 
-        canShoot = true;
-    }
-
-    void SelectColour()
-    {
-        if (transform.position.y == 0)
-        {
-            gameObject.GetComponent<Renderer>().material.color = bottomLayer;
-        }
-        else if (transform.position.y == 10)
-        {
-            gameObject.GetComponent<Renderer>().material.color = middleLayer;
-        }
-        else if (transform.position.y == 20)
-        {
-            gameObject.GetComponent<Renderer>().material.color = topLayer;
-        }
+        m_canShoot = true;
     }
 }
