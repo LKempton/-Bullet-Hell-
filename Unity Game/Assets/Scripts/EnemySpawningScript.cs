@@ -18,7 +18,7 @@ public class EnemySpawningScript : MonoBehaviour {
     {
         gc = GameObject.FindWithTag("GameController").GetComponent<GameControllerScript>();
 
-        InvokeRepeating("SpawnWave", 2, 10);
+        InvokeRepeating("SpawnWave", 2, 6);
     }
 
     void SpawnWave()
