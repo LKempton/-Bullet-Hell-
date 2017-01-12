@@ -28,10 +28,6 @@ namespace LK
         [SerializeField]
         private GameObject borderBottom;
 
-        private Color bottomLayer = new Color(0.0f, 0.0f, 255f);
-        private Color middleLayer = new Color(255f, 255f, 0.0f);
-        private Color topLayer = new Color(255f, 0.0f, 0.0f);
-
         private CameraRenderScript m_cr;
         private ChangeLayerScript m_cl;
         private PlayerDamageScript m_pd;
@@ -56,8 +52,6 @@ namespace LK
             {
                 m_currentLayer++;
 
-                UpdateColour(m_currentLayer);
-
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 10, playerTransform.position.z);
 
                 m_cl.SetLayerRecursively(gameObject, SelectLayer());
@@ -71,8 +65,6 @@ namespace LK
             else if (Input.GetButtonDown("LayerDown") && m_currentLayer > 1)
             {
                 m_currentLayer--;
-
-                UpdateColour(m_currentLayer);
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 10, playerTransform.position.z);
 
@@ -102,25 +94,6 @@ namespace LK
             rb.velocity = movement * speed;
 
             rb.position = new Vector3(Mathf.Clamp(rb.position.x, boundary.xMin, boundary.xMax), playerTransform.position.y , Mathf.Clamp(rb.position.z, boundary.zMin, boundary.zMax));
-        }
-
-        void UpdateColour(int layer)
-        {
-            switch (layer)
-            {
-                case 1:
-                    borderBottom.GetComponent<Image>().color = bottomLayer;
-                    borderTop.GetComponent<Image>().color = bottomLayer;
-                    break;
-                case 2:
-                    borderBottom.GetComponent<Image>().color = middleLayer;
-                    borderTop.GetComponent<Image>().color = middleLayer;
-                    break;
-                case 3:
-                    borderBottom.GetComponent<Image>().color = topLayer;
-                    borderTop.GetComponent<Image>().color = topLayer;
-                    break;
-            }
         }
 
         // Calls the method in the CameraRenderScript that makes only objects on the same layer visible.
