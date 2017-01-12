@@ -9,27 +9,37 @@ public class AlertScript : MonoBehaviour {
     [SerializeField]
     private Text m_alertMessage;
 
+    private bool m_isTextLimited = false;
+
     void Update()
     {
-        if (m_enemies[0] >= 3)
+        if (m_enemies[0] >= 3 && m_isTextLimited == false)
         {
+            m_isTextLimited = true;
             StopCoroutine(ShowAlert(-1));
             m_alertMessage.text = "";
             StartCoroutine(ShowAlert(1));
         }
 
-        if (m_enemies[1] >= 3)
+        if (m_enemies[1] >= 3 && m_isTextLimited == false)
         {
+            m_isTextLimited = true;
             StopCoroutine(ShowAlert(-1));
             m_alertMessage.text = "";
             StartCoroutine(ShowAlert(2));
         }
 
-        if (m_enemies[2] >= 3)
+        if (m_enemies[2] >= 3 && m_isTextLimited == false)
         {
+            m_isTextLimited = true;
             StopCoroutine(ShowAlert(-1));
             m_alertMessage.text = "";
             StartCoroutine(ShowAlert(3));
+        }
+
+        if (m_enemies[0] < 3 || m_enemies[1] < 3 || m_enemies[2] < 3)
+        {
+            m_isTextLimited = false;
         }
     }
 
