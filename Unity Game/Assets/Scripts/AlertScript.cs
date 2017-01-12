@@ -11,29 +11,45 @@ public class AlertScript : MonoBehaviour {
 
     private bool m_isTextLimited = false;
 
+    private SoundScript m_sm;
+
+    void Start()
+    {
+        m_sm = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+    }
+
     void Update()
     {
         if (m_enemies[0] >= 3 && m_isTextLimited == false)
         {
             m_isTextLimited = true;
+
             StopCoroutine(ShowAlert(-1));
+
             m_alertMessage.text = "";
+
             StartCoroutine(ShowAlert(1));
         }
 
         if (m_enemies[1] >= 3 && m_isTextLimited == false)
         {
             m_isTextLimited = true;
+
             StopCoroutine(ShowAlert(-1));
+
             m_alertMessage.text = "";
+
             StartCoroutine(ShowAlert(2));
         }
 
         if (m_enemies[2] >= 3 && m_isTextLimited == false)
         {
             m_isTextLimited = true;
+
             StopCoroutine(ShowAlert(-1));
+
             m_alertMessage.text = "";
+
             StartCoroutine(ShowAlert(3));
         }
 
