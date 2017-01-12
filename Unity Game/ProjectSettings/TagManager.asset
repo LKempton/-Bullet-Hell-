@@ -10,6 +10,7 @@ TagManager:
   - Powerup
   - SoundManager
   - ShakeableCamera
+  - PointsText
   layers:
   - Default
   - TransparentFX

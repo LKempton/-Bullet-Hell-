@@ -18,6 +18,8 @@ public class EnemyDamageScript : MonoBehaviour {
 
     private GameControllerScript m_gc;
     private SoundScript m_ss;
+    [SerializeField]
+    private PointsSystemScript m_pointsScript;
 
     private GameObject m_player;
     
@@ -26,6 +28,7 @@ public class EnemyDamageScript : MonoBehaviour {
     {
         m_gc = GameObject.FindWithTag("GameController").GetComponent<GameControllerScript>();
         m_ss = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+        m_pointsScript = GameObject.FindWithTag("PointsText").GetComponent<PointsSystemScript>();
 
         m_player = GameObject.FindWithTag("Player");
 
@@ -58,6 +61,15 @@ public class EnemyDamageScript : MonoBehaviour {
             {
                 m_ss.PlaySoundClip(2);
             }
+
+            if (m_pointsScript != null)
+            {
+                m_pointsScript.PointsUp(10);
+            }
+            else
+            {
+                m_pointsScript = GameObject.FindWithTag("PointsText").GetComponent<PointsSystemScript>();
+            }
             
             rng = Random.Range(1, 100);
             Debug.Log(rng);
@@ -71,6 +83,9 @@ public class EnemyDamageScript : MonoBehaviour {
             StopCoroutine("DamageColour");
 
             m_gc.activeEnemies--;
+
+            
+            
 
             Destroy(gameObject);
         }
