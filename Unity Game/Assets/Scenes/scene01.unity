@@ -182,6 +182,16 @@ Prefab:
       propertyPath: shakeTime
       value: 0.12
       objectReference: {fileID: 0}
+    - target: {fileID: 65000013133032634, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 0.4646362
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000013133032634, guid: 0edf7acc2f06c1a488127f27468e16ce,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0.02038765
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0edf7acc2f06c1a488127f27468e16ce, type: 2}
   m_IsPrefabParent: 0

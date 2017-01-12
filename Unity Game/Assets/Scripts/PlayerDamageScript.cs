@@ -31,6 +31,11 @@ public class PlayerDamageScript : MonoBehaviour {
         {
             Die();
         }
+
+        if (Input.GetButtonDown("Restart"))
+        {
+            RestartGame();
+        }
     }
 
     void OnTriggerEnter(Collider col)
