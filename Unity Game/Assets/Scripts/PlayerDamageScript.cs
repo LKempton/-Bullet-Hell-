@@ -20,7 +20,7 @@ public class PlayerDamageScript : MonoBehaviour {
 
     [SerializeField]
     private float graceTime = 1.0f;
-    private bool isDamageable = true;
+    private bool m_isDamageable = true;
 
     [SerializeField]
     private GameObject[] heartUI = new GameObject[3];
@@ -35,9 +35,9 @@ public class PlayerDamageScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("EnemyBullet") && isDamageable == true && isShielded == false)
+        if (col.CompareTag("EnemyBullet") && m_isDamageable == true && isShielded == false)
         {
-            isDamageable = false;
+            m_isDamageable = false;
             StartCoroutine(GracePeriod());
 
             playerHealth -= 1;
@@ -100,7 +100,7 @@ public class PlayerDamageScript : MonoBehaviour {
     {
         yield return new WaitForSeconds(graceTime);
 
-        isDamageable = true;
+        m_isDamageable = true;
     }
 
     public void SetPlayerHealth(int val)

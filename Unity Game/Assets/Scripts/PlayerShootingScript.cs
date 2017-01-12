@@ -48,7 +48,7 @@ namespace LK
 
         void Update()
         {
-            if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && Time.time > m_nextFireBullet)
+            if (Input.GetButton("Fire1") && Time.time > m_nextFireBullet)
             {
                 m_nextFireBullet = Time.time + bulletFireRate;
 
@@ -89,7 +89,7 @@ namespace LK
                 m_camShake.Shake(shakeMagnitude, shakeTime);
             }
 
-            if (Input.GetMouseButton(1) && Time.time > m_nextFireRocket)
+            if (Input.GetButton("Fire2") && Time.time > m_nextFireRocket)
             {
                 m_nextFireRocket = Time.time + rocketFireRate;
 

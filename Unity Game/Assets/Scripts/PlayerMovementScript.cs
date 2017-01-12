@@ -52,7 +52,7 @@ namespace LK
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Q) && currentLayer < 3)
+            if (Input.GetButtonDown("LayerUp") && currentLayer < 3)
             {
                 currentLayer++;
 
@@ -68,7 +68,7 @@ namespace LK
 
             }
 
-            else if (Input.GetKeyDown(KeyCode.E) && currentLayer > 1)
+            else if (Input.GetButtonDown("LayerDown") && currentLayer > 1)
             {
                 currentLayer--;
 
@@ -94,7 +94,7 @@ namespace LK
 
             movement.Normalize();
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetButton("Boost"))
             {
                 movement.z = movement.z * 1.5f;
             }
