@@ -6,26 +6,26 @@ namespace LK
     public class PlayerShootingScript : MonoBehaviour
     {
         [SerializeField]
-        private Transform bulletSpawnerLeft;
+        private Transform m_bulletSpawnerLeft;
         [SerializeField]
-        private Transform bulletSpawnerRight;
+        private Transform m_bulletSpawnerRight;
         [SerializeField]
-        private Transform rocketSpawner;
+        private Transform m_rocketSpawner;
         [SerializeField]
-        private GameObject bullet;
-        private GameObject[] bulletArray = new GameObject[50];
+        private GameObject m_bullet;
+        private GameObject[] m_bulletArray = new GameObject[50];
         [SerializeField]
-        private GameObject rocket;
+        private GameObject m_rocket;
 
         [SerializeField]
-        private float bulletFireRate;
+        private float m_bulletFireRate;
         [SerializeField]
-        private float rocketFireRate;
+        private float m_rocketFireRate;
 
         [SerializeField]
-        private float shakeMagnitude;
+        private float m_shakeMagnitude;
         [SerializeField]
-        private float shakeTime;
+        private float m_shakeTime;
 
         private bool m_isFiringLeft = true;
         private float m_nextFireBullet = 0.0f;
@@ -39,10 +39,10 @@ namespace LK
         {
             m_ss = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
             m_camShake = GameObject.FindWithTag("ShakeableCamera").GetComponent<CameraShaker>();
-            for (int i = 0; i < bulletArray.Length; i++)
+            for (int i = 0; i < m_bulletArray.Length; i++)
             {
-                bulletArray[i] = Instantiate(bullet);
-                bulletArray[i].SetActive(false);
+                m_bulletArray[i] = Instantiate(m_bullet);
+                m_bulletArray[i].SetActive(false);
             }
         }
 
@@ -50,17 +50,17 @@ namespace LK
         {
             if (Input.GetButton("Fire1") && Time.time > m_nextFireBullet)
             {
-                m_nextFireBullet = Time.time + bulletFireRate;
+                m_nextFireBullet = Time.time + m_bulletFireRate;
 
                 if (m_isFiringLeft == true)
                 {
-                    for (int i = 0; i < bulletArray.Length; i++)
+                    for (int i = 0; i < m_bulletArray.Length; i++)
                     {
-                        if (!bulletArray[i].activeInHierarchy)
+                        if (!m_bulletArray[i].activeInHierarchy)
                         {
-                            bulletArray[i].transform.position = bulletSpawnerLeft.transform.position;
-                            bulletArray[i].transform.rotation = bulletSpawnerLeft.transform.rotation;
-                            bulletArray[i].SetActive(true);
+                            m_bulletArray[i].transform.position = m_bulletSpawnerLeft.transform.position;
+                            m_bulletArray[i].transform.rotation = m_bulletSpawnerLeft.transform.rotation;
+                            m_bulletArray[i].SetActive(true);
 
                             m_ss.PlaySoundClip(0);
                             break;
@@ -70,13 +70,13 @@ namespace LK
                 }
                 else if (m_isFiringLeft == false)
                 {
-                    for (int i = 0; i < bulletArray.Length; i++)
+                    for (int i = 0; i < m_bulletArray.Length; i++)
                     {
-                        if (!bulletArray[i].activeInHierarchy)
+                        if (!m_bulletArray[i].activeInHierarchy)
                         {
-                            bulletArray[i].transform.position = bulletSpawnerRight.transform.position;
-                            bulletArray[i].transform.rotation = bulletSpawnerRight.transform.rotation;
-                            bulletArray[i].SetActive(true);
+                            m_bulletArray[i].transform.position = m_bulletSpawnerRight.transform.position;
+                            m_bulletArray[i].transform.rotation = m_bulletSpawnerRight.transform.rotation;
+                            m_bulletArray[i].SetActive(true);
 
                             m_ss.PlaySoundClip(0);
                             break;
@@ -86,16 +86,16 @@ namespace LK
                     m_isFiringLeft = true;
                 }
 
-                m_camShake.Shake(shakeMagnitude, shakeTime);
+                m_camShake.Shake(m_shakeMagnitude, m_shakeTime);
             }
 
             if (Input.GetButton("Fire2") && Time.time > m_nextFireRocket)
             {
-                m_nextFireRocket = Time.time + rocketFireRate;
+                m_nextFireRocket = Time.time + m_rocketFireRate;
 
-                Instantiate(rocket, rocketSpawner.position, rocketSpawner.rotation);
+                Instantiate(m_rocket, m_rocketSpawner.position, m_rocketSpawner.rotation);
 
-                m_camShake.Shake(shakeMagnitude + 0.1f, shakeTime + 0.1f);
+                m_camShake.Shake(m_shakeMagnitude + 0.1f, m_shakeTime + 0.1f);
 
                 m_ss.PlaySoundClip(1);
             }
@@ -103,7 +103,7 @@ namespace LK
 
         public void DoubleShot()
         {
-            bulletFireRate -= 0.1f;  
+            m_bulletFireRate -= 0.1f;  
 
             StartCoroutine(PowerupTime());
         }
@@ -111,7 +111,7 @@ namespace LK
         IEnumerator PowerupTime()
         {
             yield return new WaitForSeconds(5);
-            bulletFireRate += 0.1f;
+            m_bulletFireRate += 0.1f;
         }
 
     }

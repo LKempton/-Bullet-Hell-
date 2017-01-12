@@ -9,6 +9,9 @@ public class MenuScript : MonoBehaviour {
     private GameObject optionsMenu;
 
     [SerializeField]
+    private GameObject pauseMenu;
+
+    [SerializeField]
     private AudioMixer mixer;
 
     private SoundScript m_ss;
@@ -18,6 +21,15 @@ public class MenuScript : MonoBehaviour {
     void Start()
     {
         m_ss = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Pause"))
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 
     public void DisplayOptions()
@@ -47,6 +59,18 @@ public class MenuScript : MonoBehaviour {
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ResumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void QuitToMenu()
+    {
+        Time.timeScale = 1f;
+        Application.LoadLevel(0);
     }
 
     public void SetMasterVolume(Slider val)

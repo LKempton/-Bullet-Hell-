@@ -190,7 +190,7 @@ Transform:
   m_GameObject: {fileID: 1000013943711228}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
+  m_LocalScale: {x: 0.33333334, y: 0.6666667, z: 0.33333334}
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012082144164}
@@ -292,8 +292,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0065455, z: 0.87444246}
-  m_Center: {x: 0, y: 0.0032727718, z: -0.00075769424}
+  m_Size: {x: 1, y: 1.0065455, z: 0.4646362}
+  m_Center: {x: 0, y: 0.0032727718, z: 0.02038765}
 --- !u!114 &114000013073047790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -305,13 +305,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811b91f31bd638349901b8c897d0917b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnerLeft: {fileID: 4000012202095530}
-  bulletSpawnerRight: {fileID: 4000010705176580}
-  rocketSpawner: {fileID: 4000010255103528}
-  bullet: {fileID: 1000012555709550, guid: 6555ed3db43dc3042bf5cf1f01a41771, type: 2}
-  rocket: {fileID: 1000012233398040, guid: 3a3d57cf7e710d24b9f62aa1f139ab10, type: 2}
-  bulletFireRate: 0.2
-  rocketFireRate: 5
+  m_bulletSpawnerLeft: {fileID: 4000012202095530}
+  m_bulletSpawnerRight: {fileID: 4000010705176580}
+  m_rocketSpawner: {fileID: 4000010255103528}
+  m_bullet: {fileID: 1000012555709550, guid: 6555ed3db43dc3042bf5cf1f01a41771, type: 2}
+  m_rocket: {fileID: 1000012233398040, guid: 3a3d57cf7e710d24b9f62aa1f139ab10, type: 2}
+  m_bulletFireRate: 0.2
+  m_rocketFireRate: 7
+  m_shakeMagnitude: 0.2
+  m_shakeTime: 0.12
 --- !u!114 &114000013762556892
 MonoBehaviour:
   m_ObjectHideFlags: 1

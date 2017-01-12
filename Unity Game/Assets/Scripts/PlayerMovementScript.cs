@@ -18,7 +18,7 @@ namespace LK
         [SerializeField]
         private Boundary boundary;
 
-        private int currentLayer = 1;
+        private int m_currentLayer = 1;
 
         private Rigidbody rb;
         private Transform playerTransform;
@@ -47,37 +47,37 @@ namespace LK
             m_cl = GameObject.FindWithTag("GameController").GetComponent<ChangeLayerScript>();
             m_pd = GameObject.FindWithTag("Player").GetComponent<PlayerDamageScript>();
 
-            UpdateRenderLayers(currentLayer);
+            UpdateRenderLayers(m_currentLayer);
         }
 
         void Update()
         {
-            if (Input.GetButtonDown("LayerUp") && currentLayer < 3)
+            if (Input.GetButtonDown("LayerUp") && m_currentLayer < 3)
             {
-                currentLayer++;
+                m_currentLayer++;
 
-                UpdateColour(currentLayer);
+                UpdateColour(m_currentLayer);
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y + 10, playerTransform.position.z);
 
                 m_cl.SetLayerRecursively(gameObject, SelectLayer());
-                UpdateRenderLayers(currentLayer);
+                UpdateRenderLayers(m_currentLayer);
 
                 // Set an amount for shield for when the player changes layer.
                 m_pd.SetShieldStatus(1);
 
             }
 
-            else if (Input.GetButtonDown("LayerDown") && currentLayer > 1)
+            else if (Input.GetButtonDown("LayerDown") && m_currentLayer > 1)
             {
-                currentLayer--;
+                m_currentLayer--;
 
-                UpdateColour(currentLayer);
+                UpdateColour(m_currentLayer);
 
                 playerTransform.position = new Vector3(playerTransform.position.x, playerTransform.position.y - 10, playerTransform.position.z);
 
                 m_cl.SetLayerRecursively(gameObject, SelectLayer());
-                UpdateRenderLayers(currentLayer);
+                UpdateRenderLayers(m_currentLayer);
 
                 // Set an amount for shield for when the player changes layer.
                 m_pd.SetShieldStatus(1);
@@ -126,15 +126,15 @@ namespace LK
         // Calls the method in the CameraRenderScript that makes only objects on the same layer visible.
         void UpdateRenderLayers(int layer)
         {
-            if (currentLayer == 1)
+            if (m_currentLayer == 1)
             {
                 m_cr.ChangeCullingMask(10);
             }
-            else if (currentLayer == 2)
+            else if (m_currentLayer == 2)
             {
                 m_cr.ChangeCullingMask(9);
             }
-            else if (currentLayer == 3)
+            else if (m_currentLayer == 3)
             {
                 m_cr.ChangeCullingMask(8);
             }
