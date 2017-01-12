@@ -17,4 +17,9 @@ public class PointsSystemScript : MonoBehaviour {
         m_points += 10;
         m_pointsText.text = "Points " + m_points.ToString();
     }
+
+    public int GetPoints()
+    {
+        return m_points;
+    }
 }

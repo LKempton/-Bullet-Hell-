@@ -10,6 +10,7 @@ public class EnemyDamageScript : MonoBehaviour {
     [SerializeField]
     private GameObject[] powerups = new GameObject[2];
 
+    [SerializeField]
     private SpriteRenderer m_enemySprite;
     private Color m_defaultColour;
 
@@ -19,10 +20,19 @@ public class EnemyDamageScript : MonoBehaviour {
     private GameControllerScript m_gc;
     private SoundScript m_ss;
     private AlertScript m_alert;
+
     [SerializeField]
     private PointsSystemScript m_pointsScript;
 
     private GameObject m_player;
+
+    // Marks whether the enemy is part of the larger elite enemy.
+    [SerializeField]
+    private bool m_isPartOfElite;
+
+    // Marks whether the enemy is the main elite enemy.
+    [SerializeField]
+    private bool m_isElite;
     
 
     void Start()
@@ -35,6 +45,12 @@ public class EnemyDamageScript : MonoBehaviour {
         m_player = GameObject.FindWithTag("Player");
 
         m_enemySprite = GetComponentInChildren<SpriteRenderer>();
+
+        if (m_isPartOfElite == false && m_enemySprite != null)
+        {
+            m_defaultColour = m_enemySprite.color;
+        }
+      
     }
 
     void OnTriggerEnter(Collider col)
@@ -43,6 +59,7 @@ public class EnemyDamageScript : MonoBehaviour {
         {
             health -= 1;
 
+            if (m_isPartOfElite == false)
             StartCoroutine("DamageColour");
         }
         else if (col.CompareTag("Rocket"))
@@ -72,7 +89,7 @@ public class EnemyDamageScript : MonoBehaviour {
             }
             
             rng = Random.Range(1, 100);
-            Debug.Log(rng);
+            
             if ((rng <= rndChance && m_gc.activePowerups == 0) || m_gc.dropNext == true)
             {
                 SpawnPowerup();
@@ -82,14 +99,21 @@ public class EnemyDamageScript : MonoBehaviour {
 
             StopCoroutine("DamageColour");
 
-            m_gc.activeEnemies--;
-
+            if (m_isPartOfElite == false)
+            {
+                m_gc.activeEnemies--;
+            }
+            else if (m_isElite == true)
+            {
+                m_gc.eliteActive = false;
+            }
+            
             AdjustAlert();
 
             Destroy(gameObject);
         }
 
-        if (m_enemySprite == null)
+        if (m_enemySprite == null && m_isPartOfElite == false)
         {
             m_enemySprite = GetComponentInChildren<SpriteRenderer>();
             m_defaultColour = m_enemySprite.color;

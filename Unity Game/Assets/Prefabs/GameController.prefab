@@ -21,6 +21,8 @@ GameObject:
   - 4: {fileID: 4000012154873732}
   - 114: {fileID: 114000010751987864}
   - 114: {fileID: 114000014133520578}
+  - 114: {fileID: 114000012275553934}
+  - 114: {fileID: 114000013346245902}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -56,11 +58,35 @@ MonoBehaviour:
   - {fileID: 1000011463951484, guid: 351fb098cc7192a4cb85cbfe01b224f4, type: 2}
   - {fileID: 1000013780400292, guid: 1f4618f1470c38944a6ef40ba3cf9b21, type: 2}
   - {fileID: 1000010763315346, guid: 5cbea89bc182e5f4d9f3d1f1814ccc01, type: 2}
+  - {fileID: 1000011839241476, guid: de11ee226c1f6834fa0119a07a033a6d, type: 2}
   spawners:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   activeEnemies: 0
+--- !u!114 &114000012275553934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012707674918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31bf5a89605f47a47828cefb2b6a5595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_alertMessage: {fileID: 0}
+--- !u!114 &114000013346245902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012707674918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0271d72530bc4d94c9c7270129649551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000014133520578
 MonoBehaviour:
   m_ObjectHideFlags: 1

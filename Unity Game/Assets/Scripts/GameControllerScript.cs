@@ -8,6 +8,7 @@ public class GameControllerScript : MonoBehaviour {
 
     public int activeEnemies = 0;
     public int activePowerups = 0;
+    public bool eliteActive = false;
 
     public bool dropNext = false;
 
