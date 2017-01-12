@@ -18,6 +18,7 @@ public class EnemyDamageScript : MonoBehaviour {
 
     private GameControllerScript m_gc;
     private SoundScript m_ss;
+    private AlertScript m_alert;
     [SerializeField]
     private PointsSystemScript m_pointsScript;
 
@@ -27,14 +28,13 @@ public class EnemyDamageScript : MonoBehaviour {
     void Start()
     {
         m_gc = GameObject.FindWithTag("GameController").GetComponent<GameControllerScript>();
+        m_alert = GameObject.FindWithTag("GameController").GetComponent<AlertScript>();
         m_ss = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
         m_pointsScript = GameObject.FindWithTag("PointsText").GetComponent<PointsSystemScript>();
 
         m_player = GameObject.FindWithTag("Player");
 
         m_enemySprite = GetComponentInChildren<SpriteRenderer>();
-
-       // m_defaultColour = m_enemySprite.color;
     }
 
     void OnTriggerEnter(Collider col)
@@ -84,8 +84,7 @@ public class EnemyDamageScript : MonoBehaviour {
 
             m_gc.activeEnemies--;
 
-            
-            
+            AdjustAlert();
 
             Destroy(gameObject);
         }
@@ -101,6 +100,22 @@ public class EnemyDamageScript : MonoBehaviour {
     {
         // Spawn a random powerup on the enemies position.
         Instantiate(powerups[Random.Range(0, powerups.Length)], transform.position, transform.rotation);
+    }
+
+    private void AdjustAlert()
+    {
+        if (gameObject.layer == 10)
+        {
+            m_alert.RemoveEnemies(10);
+        }
+        else if (gameObject.layer == 9)
+        {
+            m_alert.RemoveEnemies(9);
+        }
+        else if (gameObject.layer == 8)
+        {
+            m_alert.RemoveEnemies(8);
+        }
     }
 
     IEnumerator DamageColour()
