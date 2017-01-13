@@ -12,6 +12,9 @@ public class MenuScript : MonoBehaviour {
     private GameObject pauseMenu;
 
     [SerializeField]
+    private GameObject infoMenu;
+
+    [SerializeField]
     private AudioMixer mixer;
 
     private SoundScript m_ss;
@@ -46,14 +49,21 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
+    public void DisplayInfoPanel(bool isOpen)
+    {
+        if (isOpen == true)
+        {
+            infoMenu.SetActive(false);
+        }
+        else if (isOpen == false)
+        {
+            infoMenu.SetActive(true);
+        }
+    }
+
     public void PlayGame()
     {
         Application.LoadLevel(1);
-    }
-
-    public void PlayTutorial()
-    {
-        Application.LoadLevel(2);
     }
 
     public void QuitGame()
