@@ -10,6 +10,7 @@ public class PlayerDamageScript : MonoBehaviour {
     private GameObject gameoverPanel;
     [SerializeField]
     private GameObject shield;
+
     private bool m_isShielded = false;
 
     [SerializeField]
@@ -20,10 +21,14 @@ public class PlayerDamageScript : MonoBehaviour {
 
     [SerializeField]
     private float graceTime = 1.0f;
+
     private bool m_isDamageable = true;
 
     [SerializeField]
     private GameObject[] heartUI = new GameObject[3];
+
+    [SerializeField]
+    private GameObject damageTint;
 
     void Update()
     {
@@ -94,11 +99,11 @@ public class PlayerDamageScript : MonoBehaviour {
 
     IEnumerator DamageColour()
     {
-        gameObject.GetComponent<Renderer>().material.color = damageColour;
+        damageTint.SetActive(true);
 
         yield return new WaitForSeconds(0.2f);
 
-        gameObject.GetComponent<Renderer>().material.color = baseColour;
+        damageTint.SetActive(false);
     }
 
     IEnumerator GracePeriod()
