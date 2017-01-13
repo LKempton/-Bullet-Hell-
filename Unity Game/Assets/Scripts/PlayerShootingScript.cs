@@ -46,6 +46,7 @@ namespace LK
             }
         }
 
+        // Uses a basic pooling system, stores all available bullets in an array so each one can be turned off and on as needed.
         void Update()
         {
             if (Input.GetButton("Fire1") && Time.time > m_nextFireBullet)
@@ -101,6 +102,7 @@ namespace LK
             }
         }
 
+        // Doubles fire power for a short time.
         public void DoubleShot()
         {
             m_bulletFireRate -= 0.1f;  

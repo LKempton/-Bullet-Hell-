@@ -19,6 +19,7 @@ public class EliteEnemyBehaviour : MonoBehaviour {
         InvokeRepeating("Attack", 2, 6);
     }
 
+    // Randomly turn on sets of bullet spawners.
     void Attack()
     {
         int rng = Random.Range(1, 4);
@@ -37,6 +38,7 @@ public class EliteEnemyBehaviour : MonoBehaviour {
         }
     }
 
+    // Wait 5 seconds between changing spawner.
     IEnumerator WaveTime(GameObject obj)
     {
         yield return new WaitForSeconds(5);

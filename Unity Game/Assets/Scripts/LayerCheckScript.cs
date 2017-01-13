@@ -19,6 +19,7 @@ public class LayerCheckScript : MonoBehaviour {
         CheckLayer();
     }
 
+    // Finds the y position of the object and uses that to determine what layer it should be on.
     void CheckLayer()
     {
         if (m_isElite == false)

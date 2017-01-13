@@ -25,11 +25,13 @@ public class EnemyShootingScript : MonoBehaviour {
         m_player = GameObject.FindWithTag("Player");
         m_ss = GameObject.FindWithTag("SoundManager").GetComponent<SoundScript>();
 
+        // Contantly repeats the shooting script every 'repeatRate' seconds after 3 seconds of spawning.
         InvokeRepeating("Shoot", 3f, repeatRate);
     }
 
     private void Shoot()
     {
+        // Used for the two enemies that spawn bullets instantly, goes through all the spawners and makes bullets.
         if (shootingType == "instant")
         {
             for (int i = 0; i < spawners.Length; i++)
@@ -41,6 +43,7 @@ public class EnemyShootingScript : MonoBehaviour {
                 m_ss.PlaySoundClip(3);
             }
         }
+        // For the slower firing enemy, shoots bullets from each spawner every 0.2 seconds.
         else if (shootingType == "sequence" && m_canShoot == true)
         {
             StartCoroutine("SequenceShoot");
@@ -51,6 +54,7 @@ public class EnemyShootingScript : MonoBehaviour {
     {
         m_canShoot = false;
 
+        // Makes sure the bullets fire from opposite sides each time a wave ends.
         if (!m_isLooping)
         {
             for (int k = 0; k < spawners.Length; k++)

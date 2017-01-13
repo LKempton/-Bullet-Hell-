@@ -53,6 +53,7 @@ public class EnemyDamageScript : MonoBehaviour {
       
     }
 
+    // On hit remove either 1 or 5 health from the enemy.
     void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Bullet"))
@@ -72,6 +73,7 @@ public class EnemyDamageScript : MonoBehaviour {
     {
         int rng;
         // Detects if the enemy health has dropped below 0 and destroys them if it has.
+        // Also plays appropriate sound clips when enemies die.
         if (health <= 0)
         {
             if (gameObject.layer == m_player.layer)
@@ -99,6 +101,7 @@ public class EnemyDamageScript : MonoBehaviour {
 
             StopCoroutine("DamageColour");
 
+            // Makes sure the elite spawners don't count as enemies for the purpose of enemy count.
             if (m_isPartOfElite == false)
             {
                 m_gc.activeEnemies--;
@@ -113,6 +116,7 @@ public class EnemyDamageScript : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        // Makes the enemy sprite flash on hit.
         if (m_enemySprite == null && m_isPartOfElite == false)
         {
             m_enemySprite = GetComponentInChildren<SpriteRenderer>();
@@ -126,6 +130,7 @@ public class EnemyDamageScript : MonoBehaviour {
         Instantiate(powerups[Random.Range(0, powerups.Length)], transform.position, transform.rotation);
     }
 
+    // When enemies are killed takes one off the alert counter for the layer they were on.
     private void AdjustAlert()
     {
         if (gameObject.layer == 10)
@@ -142,6 +147,7 @@ public class EnemyDamageScript : MonoBehaviour {
         }
     }
 
+    // Flashes the enemy sprite for 0.2 seconds.
     IEnumerator DamageColour()
     {
         m_enemySprite.color = damagedColour;

@@ -45,6 +45,7 @@ public class PlayerDamageScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
+        // Checks if the player is hit by a bullet and is damageable.
         if (col.CompareTag("EnemyBullet") && m_isDamageable == true && m_isShielded == false)
         {
             m_isDamageable = false;
@@ -52,6 +53,7 @@ public class PlayerDamageScript : MonoBehaviour {
 
             playerHealth -= 1;
 
+            // Change the health UI.
             ChangeHealthHeart(true);
 
             StartCoroutine("DamageColour");
@@ -108,6 +110,7 @@ public class PlayerDamageScript : MonoBehaviour {
 
     IEnumerator GracePeriod()
     {
+        // Makes the player not damageable for a short period after being hit.
         yield return new WaitForSeconds(graceTime);
 
         m_isDamageable = true;
@@ -126,6 +129,7 @@ public class PlayerDamageScript : MonoBehaviour {
 
     public void SetShieldStatus(int val)
     {
+        // Puts a shield on the enemy making them invinceable for a short time.
         m_isShielded = true;
         shield.SetActive(true);
 

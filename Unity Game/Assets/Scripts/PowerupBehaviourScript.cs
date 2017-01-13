@@ -47,6 +47,7 @@ public class PowerupBehaviourScript : MonoBehaviour {
         }
     }
 
+    // Detects if the player touches a powerup.
     void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Player"))

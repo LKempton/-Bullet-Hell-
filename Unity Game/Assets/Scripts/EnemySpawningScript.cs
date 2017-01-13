@@ -31,6 +31,7 @@ public class EnemySpawningScript : MonoBehaviour {
 
     void Update()
     {
+        // Waits until the player gets a multiple of 100 points.
         if (m_pointsSystem.GetPoints() % 100 == 0 && m_pointsSystem.GetPoints() != 0 && m_gc.eliteActive == false)
         {
             m_gc.eliteActive = true;
@@ -40,6 +41,7 @@ public class EnemySpawningScript : MonoBehaviour {
 
     void SpawnWave()
     {
+        // Spawns 3 enemies each wave on random spawners and layers.
         int layer = Random.Range(1, 4);
 
         for (int i = 0; i < spawners.Length; i++)
@@ -79,6 +81,7 @@ public class EnemySpawningScript : MonoBehaviour {
 
     void SpawnElite()
     {
+        // Spawns the elite enemy type at a random spawner on the same layer as the player.
         int _rndSpawner = Random.Range(1, 4);
 
         float variation = Random.Range(-1f, 1f);

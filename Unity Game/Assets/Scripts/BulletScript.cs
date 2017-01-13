@@ -24,6 +24,7 @@ namespace LK
 
         void OnEnable()
         {
+            // When the bullet/rocket is enabled give it a velocity at the speed put in the forward direction.
             bulletRB = GetComponent<Rigidbody>();
 
             m_cl = GameObject.FindWithTag("GameController").GetComponent<ChangeLayerScript>();
@@ -51,6 +52,7 @@ namespace LK
             }
         }
 
+        // Find the layer the bullet should be on based on a range of values.
         private int SelectLayer()
         {
             if (transform.position.y > -0.5 && transform.position.y < 0.5)

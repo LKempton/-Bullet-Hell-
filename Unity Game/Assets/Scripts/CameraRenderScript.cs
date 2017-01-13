@@ -10,6 +10,7 @@ public class CameraRenderScript : MonoBehaviour {
         m_thisCamera = gameObject.GetComponent<Camera>();
     }
 
+    // Take the current player layer and then change the culling mask properties to switch on only that layer.
     public void ChangeCullingMask(int layer)
     {
         if (layer == 10)

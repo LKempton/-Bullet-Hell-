@@ -21,7 +21,7 @@ public class BGScroller : MonoBehaviour {
         bgRenderer = GetComponent<Renderer>();
 	}
 	
-	// Update is called once per frame
+	// Scroll the background for many different options including forwards/backwards and vertical/horizontal.
 	void Update ()
     {
         if (m_isVerticalScroll == true && m_isForwards == false)
