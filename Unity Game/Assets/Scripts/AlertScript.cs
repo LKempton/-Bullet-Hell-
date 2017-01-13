@@ -53,7 +53,7 @@ public class AlertScript : MonoBehaviour {
             StartCoroutine(ShowAlert(3));
         }
 
-        if (m_enemies[0] < 3 || m_enemies[1] < 3 || m_enemies[2] < 3)
+        if (m_enemies[0] < 3 && m_enemies[1] < 3 && m_enemies[2] < 3)
         {
             m_isTextLimited = false;
         }
